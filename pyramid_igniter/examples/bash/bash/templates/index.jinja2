@@ -1,0 +1,32 @@
+﻿{% extends 'pyramid_igniter:/templates/master.bootstrap3.jinja2' %}
+
+{% block head_tail %}
+    <link rel='stylesheet' href='/static/theme.css'>
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+    {% for quote in quotes %}
+        <div class='row'>
+            <div class='pull-left'>
+                <a href='/{{ quote.id }}'>#</a>
+
+                <div class='controls'>
+                    <a href='/{{ quote.id }}/rulez' onclick='return false;'>+</a>
+                    <span id='{{ quote.id }}'>{{ quote.rating }}</span>
+                    <a href='/{{ quote.id }}/sux' onclick='return false;'>-</a>
+                </div>
+            </div>
+            <div class='center-block'>
+                {{ quote.date|timeformat('%d %B %Y, %H:%M') }} UTC
+            </div>
+            <div class='quote'>{{ quote.quote|linebreaks }}</div>
+        </div>
+    {% endfor %}
+    {% if pagination %}<ul class='pagination'>{{ pagination }}</ul>{% endif %}
+    </div>
+{% endblock %}
+
+{% block tail %}
+	<script type='text/javascript' src='/static/script.js'></script>
+{% endblock %}

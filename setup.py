@@ -1,0 +1,41 @@
+"""
+Pyramid-Igniter
+---------------
+
+Documentation: https://github.com/tark-hidden/pyramid_igniter
+"""
+from setuptools import setup, find_packages
+
+setup(
+    name='Pyramid-Igniter',
+    version='0.1',
+    url='https://github.com/tark-hidden/pyramid_igniter',
+    license='BSD',
+    author='Tark',
+    maintainer="Tark",
+    author_email='tark.hidden@gmail.com',
+    description='Class-based views bootstrap for Pyramid',
+    long_description=__doc__,
+    zip_safe=False,
+    packages=find_packages(),
+    include_package_data=True,
+    platforms='any',
+    install_requires=[
+        'pyramid',
+        'pyramid_jinja2'
+    ],
+    classifiers=[
+        'Environment :: Web Environment',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: BSD License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        'Topic :: Software Development :: Libraries :: Python Modules'
+    ]    
+)

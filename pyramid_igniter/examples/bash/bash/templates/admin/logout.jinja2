@@ -1,0 +1,11 @@
+﻿{% extends 'pyramid_igniter:/templates/master.bootstrap3.jinja2' %}
+
+{% block title %}Logout{% endblock %}
+{% block tail %}
+    <script type='text/javascript'>
+        if(confirm("Do you really want to logout?"))
+            $.post('/admin/logout', {'csrf': '{{ csrf }}'}, function(e) {
+                window.location = '/admin/';
+            });
+    </script>
+{% endblock %}

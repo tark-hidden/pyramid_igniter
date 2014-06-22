@@ -1,0 +1,14 @@
+﻿{% extends 'bash:/templates/index.jinja2' %}
+
+{% block content %}
+    <div class='content'>
+    {% if message %}<div class='alert alert-info top'>{{ message }}</div>{% endif %}
+    <h1>Adding a quote</h1>
+    <form action='/add' method='post'>
+        <input type='text' name='email' style='display: none'>
+        <textarea name='quote'>{{ quote }}</textarea>
+        <div class='clearfix'></div>
+        <br /><input type='submit' value='Send quote' class='btn btn-primary'>
+    </form>
+    </div>
+{% endblock %}

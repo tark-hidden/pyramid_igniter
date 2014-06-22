@@ -1,0 +1,19 @@
+.login-center { width: 280pt; position: absolute; top: 50%; left: 50%; margin-top: -100pt; margin-left: -160pt; }
+.login { border: 1px solid #CCC; border-radius: 10pt; overflow: auto; box-shadow: 0 0 10px rgba(0,0,0,.15); }
+.login span { margin: 20px; font-size: 80pt; }
+.login form { margin: 20pt 0 0 130pt; }
+.login div { margin: 5pt 0; }
+.login div input[type=submit] { margin: 5pt 0 0 30pt; }
+.login-error { padding-top: 15pt; border-radius: 7pt; }
+
+.content { margin-top: 20pt; }
+
+.info { width: 150pt; display: inline; text-align: center; }
+.info b { font-size: 50pt; font-weight: normal; }
+.info p { color: #666;}
+
+.row { margin: 0 0 20pt 0; }
+.pull-left { margin-left: 10pt; }
+.controls { margin-left: 50pt; display: inline; }
+.controls a { margin: 0 10px; }
+.quote { background: #f9f9f9; padding: 10px; }

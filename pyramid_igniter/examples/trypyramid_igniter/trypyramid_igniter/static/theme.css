@@ -1,0 +1,9 @@
+html, body { height: 100%; }
+body { padding: 90px 0 160px 0; }
+
+.wrap { min-height: 100%; padding-bottom: 170px; }
+* html .wrap { height: 100%; }
+
+.footer { height: 131px; margin-top: -131px; }
+.footer ul { padding: 0; }
+.footer ul li { list-style: none; }

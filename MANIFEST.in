@@ -1,0 +1,7 @@
+include LICENSE
+include README.rst
+recursive-include pyramid_igniter/templates *
+recursive-include pyramid_igniter *.py
+
+recursive-exclude pyramid_igniter/examples *
+recursive-exclude pyramid_igniter *.pyc

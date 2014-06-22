@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>{% set igniter = view.igniter %}
+        <title>{% block title %}{{ igniter.brand }}{% if view.name != igniter.brand %} - {{ view.name }}{% endif %}{% endblock %}</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        {% block head %}
+        <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css'>
+        {% endblock %}
+        {% block head_tail %}{% endblock %}
+    </head>
+    <body>
+		<div class='wrap'>
+        {% block page_body %}
+        <div class='container'>
+        <div class='{% block navbar_class %}navbar navbar-default{% endblock %}' role='navigation'>
+            <div class='container'>
+                <div class='navbar-header'>
+                    {% block brand %}<a href='{{ igniter.url }}' class='navbar-brand'>{{ igniter.brand }}</a>{% endblock %}
+                </div>
+                <div class='collapse navbar-collapse'>
+                    <ul class="nav navbar-nav">
+                    {% for item in igniter.menu %}
+                    {% if not item.url %}
+                        <li class='dropdown'>
+                            <a class='dropdown-toggle' data-toggle='dropdown' href='javascript:void(0)'>{{ item.name }}<b class='caret'></b></a>
+                            <ul class='dropdown-menu'>
+                                {% for child in igniter.menu_categories[item.name] %}
+                                    <li><a href='{{ child.url }}'>{{ child.name }}</a></li>{% endfor %}
+                            </ul>
+                        </li>
+                    {% else %}<li{% if igniter.is_active(request, item) %} class='active'{% endif %}><a href='{{ item.url }}'>{{ item.name }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    </ul>
+                    <ul class='nav navbar-nav navbar-right'>
+                        {% block menu_links %}{% endblock %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+        {% endblock %}
+
+        <div class='container'>
+            {% block content %}{% endblock %}
+        </div>
+        </div> <!-- /wrap -->
+
+        {% block footer %}{% if igniter.footer %}
+        <div class='footer'>
+            <div class='container'>
+                <div class='collapse navbar-collapse'>
+                    {% for item in igniter.footer %}
+                        <div class='{{ igniter.footer_class }}'>
+                        {% if not item.url %}
+                            <h4 class='footer_category'>{{ item.name }}</h4>
+                            <ul>{% for child in igniter.footer_categories[item.name] %}
+                                <li><a href='{{ child.url }}'>{{ child.name }}</a></li>{% endfor %}
+                            </ul>
+                        {% else %}<a href='{{ item.url }}'>{{ item.name }}</a>
+                        {% endif %}
+                        </div>
+                    {% endfor %}
+                    {% block footer_tail %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        {% endif %}{% endblock %}
+
+        {% block tail_js %}
+        <script type='text/javascript' src='//code.jquery.com/jquery-1.11.0.min.js'></script>
+        <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js'></script>
+        {% endblock %}
+        {% block tail %}{% endblock %}
+    </body>
+</html>

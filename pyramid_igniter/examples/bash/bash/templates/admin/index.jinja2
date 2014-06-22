@@ -1,0 +1,18 @@
+﻿{% extends 'pyramid_igniter:/templates/master.bootstrap3.jinja2' %}
+
+{% block head_tail %}
+    <link rel='stylesheet' href='/static/admin.css'>
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+    <div class='info pull-left'>
+        <b>{{ quote_count }}</b>
+        <p>Approved quotes</p>
+    </div>
+    <div class='info pull-left'>
+        <b>{{ abyss_count }}</b>
+        <p>New quotes in abyss.<br /><a href='/admin/moderation/'>Check it out.</a></p>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+﻿{% extends 'pyramid_igniter:/templates/master.bootstrap3.jinja2' %}
+
+{% block head_tail %}
+    <link rel='stylesheet' href='/static/admin.css'>
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+    {% for quote in quotes %}
+        <div class='row'>
+            <div class='pull-left'>
+                #{{ quote.id }} rating: {{ quote.rating }}
+            </div>
+            <div class='controls'>
+                <a href='/admin/moderation/{{ quote.id }}' class='edit' id='{{ quote.id }}'>edit</a>
+                <a href='/admin/moderation/{{ quote.id }}' class='approve' id='{{ quote.id }}'>approve</a>
+                <a href='/admin/moderation/{{ quote.id }}' class='refuse'>refuse</a>
+                <a href='/admin/moderation/{{ quote.id }}' class='delete'>delete</a>
+            </div>
+            <div class='quote' id='quote-{{ quote.id }}'>{{ quote.quote|linebreaks }}</div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block tail %}
+    <script type='text/javascript' src='/static/admin.js'></script>
+    <script type='text/javascript'>
+        var csrf = '{{ csrf }}';
+        var quote_count = {{ quotes|length }};
+    </script>
+{% endblock %}
