@@ -12,5 +12,6 @@ Getting Started
 
 
 What is it?
+***********
 
-It is a list of quotes, which added by site users.
+It is an example of Pyramid-Igniter; list of quotes, which added by site users.
