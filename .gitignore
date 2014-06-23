@@ -28,8 +28,7 @@ pip-log.txt
 .mr.developer.cfg
 
 # PyCharm
-.idea/*
-.idea/libraries/sass_stdlib.xml
+.idea/
 
 # Distribution
 dist/*
