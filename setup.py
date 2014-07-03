@@ -1,6 +1,7 @@
 """
 Pyramid-Igniter
 ---------------
+An extension that bootstraps your app with class-based views and Twitter Bootstrap.
 
 Documentation: https://github.com/tark-hidden/pyramid_igniter
 """
@@ -14,15 +15,14 @@ setup(
     author='Tark',
     maintainer="Tark",
     author_email='tark.hidden@gmail.com',
-    description='Class-based views bootstrap for Pyramid',
+    description='Flexible class-based views and Twitter Bootstrap for Pyramid',
     long_description=__doc__,
     zip_safe=False,
     packages=find_packages(),
     include_package_data=True,
     platforms='any',
     install_requires=[
-        'pyramid',
-        'pyramid_jinja2'
+        'pyramid'
     ],
     classifiers=[
         'Environment :: Web Environment',
