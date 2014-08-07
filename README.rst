@@ -89,6 +89,7 @@ Let's see how it works
         return config.make_wsgi_app()
         
 This code will handle a list of URLs:
+
     * /
     * /cats/
     * /dogs/
