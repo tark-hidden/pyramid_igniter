@@ -90,13 +90,13 @@ Let's see how it works
         
 This code will handle a list of URLs:
 
-    * /
-    * /cats/
-    * /dogs/
-    * /bbs/
-    * /bbs/add
-    * /bbs/success
-    * /image/
+- /
+- /cats/
+- /dogs/
+- /bbs/
+- /bbs/add
+- /bbs/success
+- /image/
 
 
 .. figure:: https://cloud.githubusercontent.com/assets/2255508/3421399/b97acbf4-feea-11e3-80f1-08b94d53ca0e.png
