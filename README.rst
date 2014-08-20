@@ -133,7 +133,7 @@ API
 
 - ``config`` is Pyramid Configuration instance.
 
-- ``view`` is instance of IgniterView class or a tuple of (name, url)
+- ``view`` is instance of IgniterView class.
 
 - ``debug`` prints debug information about names and urls of the routes.
 
