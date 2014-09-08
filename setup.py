@@ -4,12 +4,25 @@ Pyramid-Igniter
 An extension that bootstraps your app with class-based views and Twitter Bootstrap.
 
 Documentation: https://github.com/tark-hidden/pyramid_igniter
+
+Changelog
+*********
+
+0.2
+---
+* Added a method render to the IgniterView class. Rendering process needs some additional info about objects; now you can do some things more simpler.
+
+
+0.1
+---
+Initial release.
+
 """
 from setuptools import setup, find_packages
 
 setup(
     name='Pyramid-Igniter',
-    version='0.1',
+    version='0.2',
     url='https://github.com/tark-hidden/pyramid_igniter',
     license='BSD',
     author='Tark',
