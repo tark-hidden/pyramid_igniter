@@ -2,6 +2,7 @@
 
 import inspect
 from functools import wraps
+from pyramid.renderers import render_to_response
 from re import sub
 
 
@@ -35,6 +36,10 @@ def get_members(base, current):
             if not member[0] in base_members and not member[0].startswith('_')]
 
 
+class Inner(object):
+    __slots__ = ('igniter', 'name')
+
+
 class Igniter(object):
     url = ''
     brand = ''
@@ -57,7 +62,7 @@ class Igniter(object):
             return
 
         base = self.route_base if view.route_base != self.route_base else ''
-        name, url, views = view.get_views()
+        name, url, views = view.get_views(self)
         if not self.brand:
             self.brand = name
         if not self.url:
@@ -110,6 +115,7 @@ class Igniter(object):
 
 class IgniterView(object):
     route_base = '/'
+    igniter = None  #
     __view_defaults__ = {}
 
     def __init__(self, name=None, route_base=None):
@@ -125,7 +131,10 @@ class IgniterView(object):
             self.route_base = '/%s' % route_base.strip('/')
             self.prefix = route_base.strip('/')
 
-    def get_views(self):
+    def get_views(self, igniter):
+        if not self.igniter:
+            self.igniter = igniter
+
         views = []
         is_handle_view = hasattr(self, '_handle_view')
         for name, _ in get_members(IgniterView, self):
@@ -160,3 +169,10 @@ class IgniterView(object):
         if name == 'index' and url == name:
             url = ''
         return '%s/%s' % (self.route_base, url.lstrip('/'))
+
+    def render(self, request, template, args=None):
+        Inner.igniter = self.igniter
+        Inner.name = self.name
+        args = args or {}
+        args['view'] = Inner
+        return render_to_response(template, args, request=request)
