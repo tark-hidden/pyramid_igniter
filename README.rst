@@ -32,8 +32,15 @@ Let's see how it works
     
     @view_defaults(renderer='/templates/index.jinja2')
     class Index(IgniterView):
-        def index(self, request):
+        def index(self, request):  # /
             return dict(message='Some index page info')
+
+        def cookie(self, request):  # /cookie
+            response = self.render(request,
+                                   'igniter_doc:/templates/index.jinja2',
+                                   dict(message='Some index page info...'))
+            response.set_cookie('test_cookie', 'test!')
+            return response
     
     
     @view_defaults(renderer='/templates/pets.jinja2')
@@ -91,6 +98,7 @@ Let's see how it works
 This code will handle a list of URLs:
 
 - /
+- /cookie
 - /cats/
 - /dogs/
 - /bbs/
@@ -123,62 +131,6 @@ This code will handle a list of URLs:
 
 Well, in this short example you can see almost all the features of Pyramid-Igniter. It's an automatic creation of
 menu items, footer items and pyramid routes. Simple, isn't it?
-
-
-API
----
-.. code:: python
-
-    Igniter(config, view, debug=False, footer_class='col-md-3')
-
-- ``config`` is Pyramid Configuration instance.
-
-- ``view`` is instance of IgniterView class.
-
-- ``debug`` prints debug information about names and urls of the routes.
-
-- ``footer_class``. By default uses `col-md-3` for Bootstrap3 grid. Use `span3` for the Bootstrap2.
-
-- **Note**: the first view should be an IgniterClass instance with root route.
-
-.. code:: python
-
-    Igniter.add_view(self, view, visible=True, category=None)
-
-- ``view`` is a tuple of (name, url) or the IngiterView instance.
-
-- ``visible`` if visible=False, the item will not be shown in a menu.
-
-- ``category`` is for dropdown menu of few items.
-
-
-.. code:: python
-
-    Igniter.add_footer(view, category=None)
-
-- ``view`` is a tuple of (name, url) **only**. Sorry for that.
-
-- ``category`` is a topic for footer items.
-
-
-.. code:: python
-
-    IgniterView(name=None, route_base=None)
-
-- ``name`` is the name for menu item and page title.
-
-- ``route_base`` is root url for the routes of this class. You can define it in class you write. All the routes of this class will use route_base for generating urls.
-
-
-.. code:: python
-
-    route(rule='/', **options)
-
-- ``rule`` is the url which this function will serve. Multiple routes for single view also available.
-
-- ``options`` takes exactly the same parameters as Pyramid's add_route, so you should feel free adding custom routes to any views you create.
-
-- **Note** If you want to use Pyramid-Classy and Pyramid-Igniter both at the same time, you can import route from one of these extensions: they do exactly the same thing.
 
 
 Handling views
@@ -306,3 +258,88 @@ Both issues are not dead end, I guess.
 Examples
 --------
 Github version contains two examples in the examples directory. It's a full-featured webapps.
+
+
+API
+---
+.. code:: python
+
+    Igniter(config, view, debug=False, footer_class='col-md-3')
+
+- ``config`` is Pyramid Configuration instance.
+
+- ``view`` is instance of IgniterView class.
+
+- ``debug`` prints debug information about names and urls of the routes.
+
+- ``footer_class``. By default uses `col-md-3` for Bootstrap3 grid. Use `span3` for the Bootstrap2.
+
+- **Note**: the first view should be an IgniterClass instance with root route.
+
+.. code:: python
+
+    Igniter.add_view(self, view, visible=True, category=None)
+
+- ``view`` is a tuple of (name, url) or the IngiterView instance.
+
+- ``visible`` if visible=False, the item will not be shown in a menu.
+
+- ``category`` is for dropdown menu of few items.
+
+
+.. code:: python
+
+    Igniter.add_footer(view, category=None)
+
+- ``view`` is a tuple of (name, url) **only**. Sorry for that.
+
+- ``category`` is a topic for footer items.
+
+
+.. code:: python
+
+    IgniterView(name=None, route_base=None)
+
+- ``name`` is the name for menu item and page title.
+
+- ``route_base`` is root url for the routes of this class. You can define it in class you write. All the routes of this class will use route_base for generating urls.
+
+
+.. code:: python
+
+    IgniterView.render(request, template, args)
+
+- This method calls Pyramid render_to_response method. Don't forget that in that case **you need** use a full name of the template, including package name because it calls not in your class.
+
+- ``template`` The renderer name used to perform the rendering, e.g. project:templates/page.jinja2.
+
+- ``args`` is dict with arguments what you want render. Please don't use a variable named ``view``, it will be overwritten.
+
+
+.. code:: python
+
+    route(rule='/', **options)
+
+- ``rule`` is the url which this function will serve. Multiple routes for single view also available.
+
+- ``options`` takes exactly the same parameters as Pyramid's add_route, so you should feel free adding custom routes to any views you create.
+
+- **Note** If you want to use Pyramid-Classy and Pyramid-Igniter both at the same time, you can import route from one of these extensions: they do exactly the same thing.
+
+
+Changelog
+*********
+
+0.2
+~~~
+
+* Added a method ``render`` to the IgniterView class. Rendering process needs some additional info about objects; now you can do some things more simpler.
+
+
+0.1
+~~~
+
+Initial release.
+
+
+Please feel free to contact me if you have any questions or comments.
