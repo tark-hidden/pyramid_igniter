@@ -115,7 +115,7 @@ class Igniter(object):
 
 class IgniterView(object):
     route_base = '/'
-    igniter = None  #
+    igniter = None
     __view_defaults__ = {}
 
     def __init__(self, name=None, route_base=None):
