@@ -330,6 +330,12 @@ API
 Changelog
 *********
 
+0.2.1
+~~~~~
+
+* Fixed a bug in assigning route_base variable.
+
+
 0.2
 ~~~
 
