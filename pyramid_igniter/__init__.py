@@ -124,7 +124,8 @@ class IgniterView(object):
         prefix = n.lower()
         self.prefix = prefix
         if not route_base:
-            self.route_base = '' if prefix == 'index' else '/%s' % prefix
+            if self.route_base == '/':
+                self.route_base = '' if prefix == 'index' else '/%s' % prefix
         elif route_base == '/':
             self.route_base = ''
         else:
