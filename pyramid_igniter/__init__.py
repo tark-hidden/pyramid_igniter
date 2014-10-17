@@ -148,12 +148,13 @@ class IgniterView(object):
                 for idx, (url, options) in enumerate(attr.rules):
                     url = self.build_url(name, url)
                     route_name = options.pop('route_name', None)
+                    route_name_orig = route_name
                     view_defaults = self.__view_defaults__.copy()
                     view_defaults.update(options or {})
                     options = view_defaults
                     if not route_name:
                         route_name = '%s.%s' % (self.prefix, name)
-                    if len(attr.rules) > 1:
+                    if not route_name_orig and len(attr.rules) > 1:
                         route_name = '%s_%d' % (route_name, idx)
                     if is_handle_view:
                         attr = wrap_view(attr)
