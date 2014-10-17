@@ -330,6 +330,12 @@ API
 Changelog
 *********
 
+0.2.2
+~~~~~
+
+* Fixed a bug in route_name. Holy hell!
+
+
 0.2.1
 ~~~~~
 
