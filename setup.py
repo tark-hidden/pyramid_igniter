@@ -8,6 +8,21 @@ Documentation: https://github.com/tark-hidden/pyramid_igniter
 Changelog
 *********
 
+0.2.3
+-----
+* Py3 compatibility support. Sorry.
+
+
+0.2.2
+-----
+* Fixed a bug in route_name. Holy hell!
+
+
+0.2.1
+-----
+* Fixed a bug in assigning route_base variable.
+
+
 0.2
 ---
 * Added a method render to the IgniterView class. Rendering process needs some additional info about objects; now you can do some things more simpler.
@@ -22,7 +37,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='Pyramid-Igniter',
-    version='0.2',
+    version='0.2.3',
     url='https://github.com/tark-hidden/pyramid_igniter',
     license='BSD',
     author='Tark',
