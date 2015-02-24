@@ -78,7 +78,7 @@ class Igniter(object):
             self.config.add_route(route_name, url)
             self.config.add_view(function, route_name=route_name, **options)
             if self.debug:
-                print "%s => '%s'" % (url, route_name)
+                print("%s => '%s'" % (url, route_name))
 
     def add_to_menu(self, name, url, views, category=None, is_link=False):
         if category:
