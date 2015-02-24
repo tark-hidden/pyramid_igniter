@@ -330,6 +330,12 @@ API
 Changelog
 *********
 
+0.2.3
+~~~~~
+
+* Py3 compatibility support.
+
+
 0.2.2
 ~~~~~
 
