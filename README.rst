@@ -330,6 +330,12 @@ API
 Changelog
 *********
 
+0.2.4
+~~~~~
+
+* Now I have Python 3.4.3 locally and 2.7.3 on my VDS and I can check it on both interpreters. Python3 functions have no func_dict object but __dict__ works fine. Who cares? No one told me about that. And... inspect.ismethod still works here but isfunction don't.
+
+
 0.2.3
 ~~~~~
 
