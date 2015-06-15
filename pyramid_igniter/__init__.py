@@ -73,8 +73,8 @@ class Igniter(object):
         for current_view in views:
             route_name, url, function, options = current_view
             url = self.build_url(base, url)
-            function.func_dict['igniter'] = self
-            function.func_dict['name'] = name
+            function.__dict__['igniter'] = self
+            function.__dict__['name'] = name
             self.config.add_route(route_name, url)
             self.config.add_view(function, route_name=route_name, **options)
             if self.debug:
@@ -158,12 +158,12 @@ class IgniterView(object):
                         route_name = '%s_%d' % (route_name, idx)
                     if is_handle_view:
                         attr = wrap_view(attr)
-                        attr.func_dict['_handle_view'] = self._handle_view
+                        attr.__dict__['_handle_view'] = self._handle_view
                     views.append((route_name, url, attr, options))
             else:
                 if is_handle_view:
                     attr = wrap_view(attr)
-                    attr.func_dict['_handle_view'] = self._handle_view
+                    attr.__dict__['_handle_view'] = self._handle_view
                 views.append((route_name, url, attr, options))
         return self.name, self.route_base + '/', views
 
